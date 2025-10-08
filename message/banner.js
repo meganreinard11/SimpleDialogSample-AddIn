@@ -41,8 +41,10 @@
             var _resizeRegular = function() {
                 if ((_clientWidth - _bufferSize) > _initTextWidth && _initTextWidth < _textContainerMaxWidth) {
                     _textWidth = "auto";
-                     if (_chevronButton) { _chevronButton.className = "ms-MessageBanner-expand"; }
-                    _collapse();
+                     if (_chevronButton) { 
+                         _chevronButton.className = "ms-MessageBanner-expand";
+                        _collapse();
+                     }
                 } else {
                     _textWidth = Math.min((_clientWidth - _bufferSize), _textContainerMaxWidth) + "px";
                     if (_chevronButton) { if(_chevronButton.className.indexOf("is-visible") === -1) { _chevronButton.className += " is-visible"; } }
@@ -53,7 +55,7 @@
             var _resizeSmall = function() {
                 if (_clientWidth - (_bufferElementsWidthSmall + _closeButton.offsetWidth) > _initTextWidth) {
                     _textWidth = "auto";
-                    _collapse();
+                    if (_chevronButton) { _collapse(); }
                 } else {
                     _textWidth = (_clientWidth - (_bufferElementsWidthSmall + _closeButton.offsetWidth)) + "px";
                 }
@@ -73,8 +75,6 @@
                     var icon = _chevronButton.querySelector('.ms-Icon');
                     _errorBanner.className += " is-expanded";
                     icon.className = "ms-Icon ms-Icon--chevronsUp";
-                } else {
-                    _errorBanner.className += " is-expanded";
                 }
             };
 
@@ -83,16 +83,16 @@
                     var icon = _chevronButton.querySelector('.ms-Icon');
                     _errorBanner.className = "ms-MessageBanner";
                     icon.className = "ms-Icon ms-Icon--chevronsDown";
-                } else {
-                   _errorBanner.className = "ms-MessageBanner"; 
                 }
             };
 
             var _toggleExpansion = function() {
-                if (_errorBanner.className.indexOf("is-expanded") > -1) {
-                    _collapse();
-                } else {
-                    _expand();
+                if (_chevronButton) { 
+                    if (_errorBanner.className.indexOf("is-expanded") > -1) {
+                        _collapse();
+                    } else {
+                        _expand();
+                    }
                 }
             };
 
