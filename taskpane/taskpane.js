@@ -4,7 +4,7 @@ var messageBanner;
 
 Office.initialize = () => {
     setAutoOpenOn();
-    await Excel.run(async context => {
+    await Excel.run(async (context) => {
       let sheet = context.workbook.worksheets.getItem(TARGET.sheet);
       sheet.onSelectionChanged.add(handleSelectionChanged);
       await context.sync();
