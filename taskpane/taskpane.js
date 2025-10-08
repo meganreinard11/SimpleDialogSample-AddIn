@@ -8,7 +8,7 @@ Office.initialize = function (reason) {
         // Initialize the FabricUI notification mechanism and hide it
         var element = document.querySelector('.ms-MessageBanner');
         messageBanner = new app.notification.MessageBanner(element);
-        messageBanner.hideBanner();
+        //messageBanner.hideBanner();
         if (!Office.context.requirements.isSetSupported('ExcelApi', '1.1')) {
             $('#subtitle').text("Opps!");
             $("#template-description").text("Sorry, this sample requires Word 2016 or later. The button will not open a dialog.");
