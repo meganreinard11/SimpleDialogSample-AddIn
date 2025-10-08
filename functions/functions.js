@@ -1,5 +1,4 @@
 var clickEvent;
-// The initialize function must be defined each time a new page is loaded
 
 // Wrap the writeToDoc in showNotification because showNotification is called in dialog.js but must be defined differently when the dialog is called from a task pane instead of a custom menu command.
 function showNotification(text) {
@@ -12,7 +11,7 @@ function showNotification(text) {
 function doSomethingAndShowDialog(event) {
     clickEvent = event;
     writeToDoc("Ribbon button clicked.");
-    openDialogAsIframe();
+    openDialog();
 }
 
 function writeToDoc(text) {
