@@ -21,7 +21,7 @@ Office.initialize = function (reason) {
         $('#action-button').click(openDialog);
         $('#button-text2').text("Pick a number (IFrame**)");
         $('#button-desc2').text("Pick your favorite number");
-        $('#action-button2').click(openDialogAsIframe);
+        $('#action-button2').click(openDialog);
     });
 };
 
