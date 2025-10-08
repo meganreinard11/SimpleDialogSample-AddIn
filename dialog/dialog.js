@@ -56,6 +56,6 @@ function openDialog() {
 
 function openDialogAsIframe() {
     //IMPORTANT: IFrame mode only works in Online (Web) clients. Desktop clients (Windows, IOS, Mac) always display as a pop-up inside of Office apps. 
-    Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog.html", { height: 50, width: 50, displayInIframe: true }, dialogCallback);
+    Office.context.ui.displayDialogAsync(window.location.origin + "/dialog.html", { height: 50, width: 50, displayInIframe: true }, dialogCallback);
 }
 
