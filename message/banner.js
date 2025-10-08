@@ -97,9 +97,12 @@
             };
 
             var _hideBanner = function() {
-                if(_errorBanner.className.indexOf("hide") === -1) {
+                /* if(_errorBanner.className.indexOf("hide") === -1) {
                     _errorBanner.className += " hide";
                     setTimeout(function() { _errorBanner.className = "ms-MessageBanner is-hidden"; }, 500);
+                } */
+                if(_errorBanner.className.indexOf("hidden") === -1) {
+                    _errorBanner.className += " hidden";
                 }
             };
 
