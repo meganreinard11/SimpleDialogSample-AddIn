@@ -16,8 +16,7 @@ function dialogCallback(asyncResult) {
                 showNotification(asyncResult.error.message);
                 break;
         }
-    }
-    else {
+    } else {
         dialog = asyncResult.value;
         //Messages are sent by developers programatically from the dialog using office.context.ui.messageParent(...)
         dialog.addEventHandler(Office.EventType.DialogMessageReceived, messageHandler);
@@ -51,7 +50,7 @@ function eventHandler(arg) {
 }
 
 function openDialog() {
-    Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog.html", { height: 50, width: 50 }, dialogCallback);
+    Office.context.ui.displayDialogAsync(window.location.origin + "/dialog.html", { height: 50, width: 50 }, dialogCallback);
 }
 
 function openDialogAsIframe() {
