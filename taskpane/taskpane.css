@@ -14,3 +14,10 @@ body {
 .default {
     cursor: default;
 }
+
+span {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;    /* Internet Explorer/Edge */
+    user-select: none;        /* Standard syntax */
+    cursor: default;
+}
