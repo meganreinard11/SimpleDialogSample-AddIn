@@ -1,14 +1,7 @@
 var clickEvent;
 // The initialize function must be defined each time a new page is loaded
-(function () {
-    Office.initialize = function (reason) {
-       // If you need to initialize something you can do so here.
-    };
-})();
 
-// Wrap the writeToDoc in showNotification because showNotification is called
-// in DialogHelper.js but must be defined differently when the dialog is called
-// from a task pane instead of a custom menu command.
+// Wrap the writeToDoc in showNotification because showNotification is called in dialog.js but must be defined differently when the dialog is called from a task pane instead of a custom menu command.
 function showNotification(text) {
     writeToDoc(text);
     //Required, call event.completed to let the platform know you are done processing.
