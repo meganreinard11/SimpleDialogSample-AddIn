@@ -40,14 +40,14 @@ ul {
   font-size: 20px;
   top: 4px; }
 
-.element-to-hide {
+.ms-MessageBanner {
   opacity: 1;
   max-height: 200px; /* Or a specific height */
   overflow: hidden;
   transition: opacity 0.5s ease-out, max-height 0.5s ease-out;
 }
 
-.element-to-hide.hidden {
+.ms-MessageBanner.hidden {
   opacity: 0;
   max-height: 0;
 }
