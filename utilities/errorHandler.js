@@ -214,11 +214,11 @@ function getTimestamp() {
 // Get time zone offset for NY, USA
 function getEstOffset () {
     const stdTimezoneOffset = () => {
-        var jan = new Date(0, 1), jul = new Date(6, 1)
-        return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())
+        var jan = new Date(0, 1), jul = new Date(6, 1);
+        return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
     }
     var today = new Date()
-    const isDstObserved = (today: Date) => { return today.getTimezoneOffset() < stdTimezoneOffset() }
+    const isDstObserved = (today: Date) => { return today.getTimezoneOffset() < stdTimezoneOffset(); }
     return (isDstObserved(today) ? -4 : -5);
 }
 
