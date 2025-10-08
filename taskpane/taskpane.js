@@ -9,7 +9,7 @@ Office.initialize = function (reason) {
         var element = document.querySelector('.ms-MessageBanner');
         messageBanner = new app.notification.MessageBanner(element);
         messageBanner.hideBanner();
-        if (!Office.context.requirements.isSetSupported('WordApi', '1.1')) {
+        if (!Office.context.requirements.isSetSupported('ExcelApi', '1.1')) {
             $('#subtitle').text("Opps!");
             $("#template-description").text("Sorry, this sample requires Word 2016 or later. The button will not open a dialog.");
             $('#button-text').text("Button");
