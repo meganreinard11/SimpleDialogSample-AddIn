@@ -32,6 +32,7 @@ async function handleSelectionChanged(event) {
   await Excel.run(async (context) => {
     if (event.address !== TARGET.address) return;
     await context.sync();
+    
   }).catch(window.ErrorHandler.handleError);
 };
 
