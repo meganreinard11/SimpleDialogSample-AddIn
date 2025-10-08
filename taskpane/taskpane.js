@@ -31,6 +31,7 @@ function errorHandler(error) {
 
 function showNotification(content) {
     $("#notificationBody").text(content);
+    $("#subtitle").text(content);
     messageBanner.showBanner();
     messageBanner.toggleExpansion();
 }
