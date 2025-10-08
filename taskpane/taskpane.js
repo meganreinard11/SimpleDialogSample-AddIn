@@ -5,7 +5,7 @@ var messageBanner;
 
 Office.initialize = () => {
     setAutoOpenOn();
-    await Excel.run(async (context) => {
+    Excel.run(async (context) => {
       let sheet = context.workbook.worksheets.getItem(TARGET.sheet);
       sheet.onSelectionChanged.add(handleSelectionChanged);
       await context.sync();
@@ -29,7 +29,7 @@ Office.initialize = () => {
 };
 
 async function handleSelectionChanged(event) {
-  await Excel.run(async (context) => {
+  Excel.run(async (context) => {
     if (event.address !== TARGET.address) return;
     await context.sync();
     alert("TARGET Selected");
