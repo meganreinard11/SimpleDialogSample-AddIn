@@ -31,3 +31,8 @@ function showNotification(content) {
     messageBanner.showBanner();
     messageBanner.toggleExpansion();
 }
+
+function setAutoOpenOn() {
+    Office.context.document.settings.set('Office.AutoShowTaskpaneWithDocument', true);
+    Office.context.document.settings.saveAsync();
+}
