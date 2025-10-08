@@ -1,5 +1,4 @@
 var dialog;
-var html = "https://meganreinard11.github.io/SimpleDialogSample-AddIn/dialog/dialog.html";
 
 function dialogCallback(asyncResult) {
     if (asyncResult.status == "failed") {
@@ -51,11 +50,12 @@ function eventHandler(arg) {
 }
 
 function openDialog() {
-    Office.context.ui.displayDialogAsync(html, { height: 50, width: 50 }, dialogCallback);
-}
-
-function openDialogAsIframe() {
-    //IMPORTANT: IFrame mode only works in Online (Web) clients. Desktop clients (Windows, IOS, Mac) always display as a pop-up inside of Office apps. 
-    Office.context.ui.displayDialogAsync(html, { height: 50, width: 50, displayInIframe: true }, dialogCallback);
+    var html = "https://meganreinard11.github.io/SimpleDialogSample-AddIn/dialog/dialog.html";
+    if (Office.context.platform === Office.PlatformType.Web) {
+        //IMPORTANT: IFrame mode only works in Online (Web) clients. Desktop clients (Windows, IOS, Mac) always display as a pop-up inside of Office apps. 
+        Office.context.ui.displayDialogAsync(html, { height: 50, width: 50, displayInIframe: true }, dialogCallback);
+    } else {
+        Office.context.ui.displayDialogAsync(html, { height: 50, width: 50 }, dialogCallback);
+    }
 }
 
