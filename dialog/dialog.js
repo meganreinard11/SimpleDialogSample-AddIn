@@ -2,9 +2,6 @@ var dialog;
 
 function dialogCallback(asyncResult) {
     if (asyncResult.status == "failed") {
-
-        // In addition to general system errors, there are 3 specific errors for 
-        // displayDialogAsync that you can handle individually.
         switch (asyncResult.error.code) {
             case 12004:
                 showNotification("Domain is not trusted");
@@ -22,25 +19,20 @@ function dialogCallback(asyncResult) {
     }
     else {
         dialog = asyncResult.value;
-        /*Messages are sent by developers programatically from the dialog using office.context.ui.messageParent(...)*/
+        //Messages are sent by developers programatically from the dialog using office.context.ui.messageParent(...)
         dialog.addEventHandler(Office.EventType.DialogMessageReceived, messageHandler);
-
-        /*Events are sent by the platform in response to user actions or errors. For example, the dialog is closed via the 'x' button*/
+        // Events are sent by the platform in response to user actions or errors. For example, the dialog is closed via the 'x' button
         dialog.addEventHandler(Office.EventType.DialogEventReceived, eventHandler);
     }
 }
-
 
 function messageHandler(arg) {
     dialog.close();
     showNotification(arg.message);
 }
 
-
 function eventHandler(arg) {
-
-    // In addition to general system errors, there are 2 specific errors 
-    // and one event that you can handle individually.
+    // In addition to general system errors, there are 2 specific errors and one event that you can handle individually.
     switch (arg.error) {
         case 12002:
             showNotification("Cannot load URL, no such page or bad URL syntax.");
@@ -59,13 +51,11 @@ function eventHandler(arg) {
 }
 
 function openDialog() {
-    Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog.html",
-        { height: 50, width: 50 }, dialogCallback);
+    Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog.html", { height: 50, width: 50 }, dialogCallback);
 }
 
 function openDialogAsIframe() {
     //IMPORTANT: IFrame mode only works in Online (Web) clients. Desktop clients (Windows, IOS, Mac) always display as a pop-up inside of Office apps. 
-    Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog.html",
-        { height: 50, width: 50, displayInIframe: true }, dialogCallback);
+    Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog.html", { height: 50, width: 50, displayInIframe: true }, dialogCallback);
 }
 
