@@ -44,12 +44,14 @@ ul {
   opacity: 1;
   max-height: 200px; /* Or a specific height */
   overflow: hidden;
+  border-bottom-style: solid;
   transition: opacity 0.5s ease-out, max-height 0.5s ease-out;
 }
 
 .ms-MessageBanner.hidden {
   opacity: 0;
   max-height: 0;
+  border-bottom-style: hidden;
 }
 
 .main-section {
