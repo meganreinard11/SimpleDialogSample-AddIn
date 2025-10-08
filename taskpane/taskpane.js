@@ -4,6 +4,7 @@ var messageBanner;
 
 // The initialize function must be defined each time a new page is loaded.
 Office.initialize = function (reason) {
+    setAutoOpenOn();
     $(document).ready(function () {
         // Initialize the FabricUI notification mechanism and hide it
         var element = document.querySelector('.ms-MessageBanner');
