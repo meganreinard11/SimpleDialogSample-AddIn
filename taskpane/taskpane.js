@@ -2,9 +2,14 @@
 
 var messageBanner;
 
-// The initialize function must be defined each time a new page is loaded.
-Office.initialize = function (reason) {
+Office.initialize = () => {
     setAutoOpenOn();
+    await Excel.run(async context => {
+      let sheet = context.workbook.worksheets.getItem(TARGET.sheet);
+      sheet.onSelectionChanged.add(handleSelectionChanged);
+      await context.sync();
+    }).catch(window.ErrorHandler.handleError);
+    
     $(document).ready(function () {
         // Initialize the FabricUI notification mechanism and hide it
         var element = document.querySelector('.ms-MessageBanner');
@@ -20,6 +25,13 @@ Office.initialize = function (reason) {
         $('#action-button').click(openDialog);
         $('#action-button2').click(openDialog);
     });
+};
+
+async function handleSelectionChanged(event) {
+  await Excel.run(async (context) => {
+    if (event.address !== TARGET.address) return;
+    await context.sync();
+  }).catch(window.ErrorHandler.handleError);
 };
 
 function errorHandler(error) {
