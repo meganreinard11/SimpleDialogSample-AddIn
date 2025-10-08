@@ -11,11 +11,7 @@ body {
     padding: 15px;
 }
 
-.default {
-    cursor: default;
-}
-
-span {
+span, .protected {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none;    /* Internet Explorer/Edge */
     user-select: none;        /* Standard syntax */
