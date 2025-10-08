@@ -16,11 +16,7 @@ Office.initialize = function (reason) {
             $('#button-desc').text("Button that opens dialog only on Word 2016 or later.");
             return;
         }
-        $('#button-text').text("Pick a number (pop-up)");
-        $('#button-desc').text("Pick your favorite number");
         $('#action-button').click(openDialog);
-        $('#button-text2').text("Pick a number (IFrame**)");
-        $('#button-desc2').text("Pick your favorite number");
         $('#action-button2').click(openDialog);
     });
 };
