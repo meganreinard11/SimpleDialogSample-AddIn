@@ -28,6 +28,7 @@
             var _bufferElementsWidth = 88;
             var _bufferElementsWidthSmall = 35;
             var SMALL_BREAK_POINT = 480;
+            
             var _onResize = function() {
                 _clientWidth = _errorBanner.offsetWidth;
                 if(window.innerWidth >= SMALL_BREAK_POINT ) {
@@ -40,13 +41,11 @@
             var _resizeRegular = function() {
                 if ((_clientWidth - _bufferSize) > _initTextWidth && _initTextWidth < _textContainerMaxWidth) {
                     _textWidth = "auto";
-                    _chevronButton.className = "ms-MessageBanner-expand";
+                     if (_chevronButton) { _chevronButton.className = "ms-MessageBanner-expand"; }
                     _collapse();
                 } else {
                     _textWidth = Math.min((_clientWidth - _bufferSize), _textContainerMaxWidth) + "px";
-                    if(_chevronButton.className.indexOf("is-visible") === -1) {
-                        _chevronButton.className += " is-visible";
-                    }
+                    if (_chevronButton) { if(_chevronButton.className.indexOf("is-visible") === -1) { _chevronButton.className += " is-visible"; } }
                 }
                 _clipper.style.width = _textWidth;
             };
@@ -63,22 +62,30 @@
           
             var _cacheDOM = function(context) {
                 _errorBanner = context.container;
-                _clipper = context.container.querySelector('.ms-MessageBanner-clipper');
-                _chevronButton = context.container.querySelector('.ms-MessageBanner-expand');
+                _clipper = _errorBanner.querySelector('.ms-MessageBanner-clipper');
+                _chevronButton = _errorBanner.querySelector('.ms-MessageBanner-expand');
                 _bufferSize = _bufferElementsWidth;
-                _closeButton = context.container.querySelector('.ms-MessageBanner-close');
+                _closeButton = _errorBanner.querySelector('.ms-MessageBanner-close');
             };
 
             var _expand = function() {
-                var icon = _chevronButton.querySelector('.ms-Icon');
-                _errorBanner.className += " is-expanded";
-                icon.className = "ms-Icon ms-Icon--chevronsUp";
+                if (_chevronButton) {
+                    var icon = _chevronButton.querySelector('.ms-Icon');
+                    _errorBanner.className += " is-expanded";
+                    icon.className = "ms-Icon ms-Icon--chevronsUp";
+                } else {
+                    _errorBanner.className += " is-expanded";
+                }
             };
 
             var _collapse = function() {
-                var icon = _chevronButton.querySelector('.ms-Icon');
-                _errorBanner.className = "ms-MessageBanner";
-                icon.className = "ms-Icon ms-Icon--chevronsDown";
+                if (_chevronButton) {
+                    var icon = _chevronButton.querySelector('.ms-Icon');
+                    _errorBanner.className = "ms-MessageBanner";
+                    icon.className = "ms-Icon ms-Icon--chevronsDown";
+                } else {
+                   _errorBanner.className = "ms-MessageBanner"; 
+                }
             };
 
             var _toggleExpansion = function() {
@@ -92,9 +99,7 @@
             var _hideBanner = function() {
                 if(_errorBanner.className.indexOf("hide") === -1) {
                     _errorBanner.className += " hide";
-                    setTimeout(function() {
-                        _errorBanner.className = "ms-MessageBanner is-hidden";
-                    }, 500);
+                    setTimeout(function() { _errorBanner.className = "ms-MessageBanner is-hidden"; }, 500);
                 }
             };
 
@@ -105,7 +110,7 @@
            
             var _setListeners = function() {
                 window.addEventListener('resize', _onResize, false);
-                _chevronButton.addEventListener("click", _toggleExpansion, false);
+                if (_chevronButton) { _chevronButton.addEventListener("click", _toggleExpansion, false); }
                 _closeButton.addEventListener("click", _hideBanner, false);
             };
 
