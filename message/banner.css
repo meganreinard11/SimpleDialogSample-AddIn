@@ -52,6 +52,10 @@ ul {
   max-height: 0;
 }
 
+.main-section {
+  transition: opacity 0.5s ease-out, max-height 0.5s ease-out;
+}
+
 .ms-notification-message-banner {
   display: -webkit-flex;
   display: flex;
