@@ -45,6 +45,7 @@ ul {
   max-height: 200px; /* Or a specific height */
   overflow: hidden;
   border-bottom-style: solid;
+  min-width: 0px;
   transition: opacity 0.5s ease-out, max-height 0.5s ease-out;
 }
 
